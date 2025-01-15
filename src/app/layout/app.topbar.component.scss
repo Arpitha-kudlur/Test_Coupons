@@ -1,0 +1,59 @@
+#header_container {
+    background-color: var(--primary-color);
+    color: var(--primary-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2.5rem;
+    height: 70px;
+
+    .left-content-container{
+        .logo-img{
+            width: 130px;
+        }
+    }
+    .right-content-container{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .user-pic{
+            margin-top: 4px;
+            img{
+                width: 14px;
+            }
+
+        }
+        .user-name{
+            font-size: 12px;
+        }
+    }.dropdown-menu {
+        position: absolute;
+        top: 50px; /* Adjust based on your header height */
+        right: 0;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 5px;
+        width: 150px;
+        z-index: 100;
+      }
+      
+      .dropdown-menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .dropdown-menu ul li {
+        padding: 4px;
+        text-align: center;
+        color: #333;
+        display: block;
+      }
+      
+      .dropdown-menu ul li:hover {
+        background-color: #f0f0f0;
+      }
+      
+
+}

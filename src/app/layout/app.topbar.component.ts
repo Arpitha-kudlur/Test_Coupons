@@ -4,11 +4,12 @@ import { LayoutService } from "./service/app.layout.service";
 
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
+    styleUrl: './app.topbar.component.scss'
 })
 export class AppTopBarComponent {
 
-    items!: MenuItem[];
+    // items!: MenuItem[];
 
     @ViewChild('menubutton') menuButton!: ElementRef;
 
@@ -17,4 +18,15 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenu') menu!: ElementRef;
 
     constructor(public layoutService: LayoutService) { }
+
+    dropdownVisible: boolean = false;
+    items: MenuItem[] | undefined;
+    
+      toggleDropdown() {
+        this.dropdownVisible = !this.dropdownVisible;
+      }
+  
+      onLogout(){
+  
+      }
 }

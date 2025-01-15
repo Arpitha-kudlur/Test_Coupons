@@ -1,105 +1,123 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-import { Product } from '../../api/product';
-import { ProductService } from '../../service/product.service';
-import { Subscription, debounceTime } from 'rxjs';
-import { LayoutService } from 'src/app/layout/service/app.layout.service';
+import { Component, OnInit } from '@angular/core';
+import { TableModule } from 'primeng/table';
+// import { Product } from '@domain/product';
+// import { ProductService } from '@service/productservice';
+import { CommonModule } from '@angular/common';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
-    templateUrl: './dashboard.component.html',
+  selector: 'app-dashboard',
+  // imports: [TableModule, CommonModule, RouterLink, RouterModule],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class DashboardComponent {
+  products: any[] = [];
+  sortField: any = '';
+  sortOrder: any = 1;
 
-    items!: MenuItem[];
+  constructor() {}
 
-    products!: Product[];
-
-    chartData: any;
-
-    chartOptions: any;
-
-    subscription!: Subscription;
-
-    constructor(private productService: ProductService, public layoutService: LayoutService) {
-        this.subscription = this.layoutService.configUpdate$
-        .pipe(debounceTime(25))
-        .subscribe((config) => {
-            this.initChart();
-        });
-    }
-
-    ngOnInit() {
-        this.initChart();
-        this.productService.getProductsSmall().then(data => this.products = data);
-
-        this.items = [
-            { label: 'Add New', icon: 'pi pi-fw pi-plus' },
-            { label: 'Remove', icon: 'pi pi-fw pi-minus' }
+  ngOnInit() {
+        this.products = [
+          {
+            'code': '123456789123456',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0000025104 Bounus auf salaren',
+            'lineManager' : "Laurent Mul",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7610100106811',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0001000101 Communication & Publ',
+            'lineManager' : "Peter Pan",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7610100741944',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0001000104 Consumer Newspaper',
+            'lineManager' : "Lisa Lauden",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7610100741920',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0001000103 Consumer Service',
+            'lineManager' : "Amand Burr",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7610100741937',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0001000103 Consumer Service',
+            'lineManager' : "Lisa Lauden",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7445868223635',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0001000104 Consumer Newspaper',
+            'lineManager' : "Laurent Mul",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '789123456123456',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0000025104 Bounus auf salaren',
+            'lineManager' : "Laurent Mul",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7610100741930',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0000025104 Bounus auf salaren',
+            'lineManager' : "Laurent Mul",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7610100196010',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0001000101 Communication & Publ',
+            'lineManager' : "Laurent Mul",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          {
+            'code': '7610100741944',
+            'imported': '12/02/2024',
+            'activated': '12/02/2024',
+            'costCenter': '0000025104 Bounus auf salaren',
+            'lineManager' : "Laurent Mul",
+            'status': "Assigned",
+            'url':'https://www.tec-nestle..'
+          },
+          
         ];
-    }
+    
+}
 
-    initChart() {
-        const documentStyle = getComputedStyle(document.documentElement);
-        const textColor = documentStyle.getPropertyValue('--text-color');
-        const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
-        const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+onSort(event: any) {
+  this.sortField = event.field;   // Set the field being sorted
+  this.sortOrder = event.order;   // Set the order (1 = ascending, -1 = descending)
+}
 
-        this.chartData = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                {
-                    label: 'First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                    fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--bluegray-700'),
-                    borderColor: documentStyle.getPropertyValue('--bluegray-700'),
-                    tension: .4
-                },
-                {
-                    label: 'Second Dataset',
-                    data: [28, 48, 40, 19, 86, 27, 90],
-                    fill: false,
-                    backgroundColor: documentStyle.getPropertyValue('--green-600'),
-                    borderColor: documentStyle.getPropertyValue('--green-600'),
-                    tension: .4
-                }
-            ]
-        };
-
-        this.chartOptions = {
-            plugins: {
-                legend: {
-                    labels: {
-                        color: textColor
-                    }
-                }
-            },
-            scales: {
-                x: {
-                    ticks: {
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
-                    }
-                },
-                y: {
-                    ticks: {
-                        color: textColorSecondary
-                    },
-                    grid: {
-                        color: surfaceBorder,
-                        drawBorder: false
-                    }
-                }
-            }
-        };
-    }
-
-    ngOnDestroy() {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
-    }
 }
