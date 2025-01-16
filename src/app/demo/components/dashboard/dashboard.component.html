@@ -1,6 +1,6 @@
 <main id="dashboard-container">
-    <section class="voucher-generator-wrapper">
-        <div class="title"><h3>Generate Voucher</h3></div>
+    <section class="voucher-generator-wrapper ">
+        <div class="title"><h4>Generate Voucher</h4></div>
         <div class="content">
             <div class="row">
                 <div class="user-name content-body">
@@ -39,7 +39,7 @@
     </section>
     <section class="voucher-history-wrapper">
         <header>
-            <div class="title"><h3>Voucher History</h3></div>
+            <div class="title"><h4>Voucher History</h4></div>
             <div class="navigation-wrapper">
                 <div class="filter-container">
                     <div class="filter-img">
@@ -69,7 +69,7 @@
             >
                 <ng-template pTemplate="header">
                     <tr>
-                        <th pSortableColumn="name" style="width: 15%">
+                        <th pSortableColumn="code" style="width: 15%">
                             EAN code
                             <img
                                 [src]="
@@ -85,7 +85,7 @@
                             />
                         </th>
 
-                        <th pSortableColumn="category" style="width: 15%">
+                        <th pSortableColumn="imported" style="width: 15%">
                             Date of Import
                             <img
                                 [src]="
@@ -100,7 +100,7 @@
                                 class="sort-icon"
                             />
                         </th>
-                        <th pSortableColumn="quantity" style="width: 15%">
+                        <th pSortableColumn="activated" style="width: 15%">
                             Date of Activation
                             <img
                                 [src]="
@@ -116,7 +116,7 @@
                             />
                         </th>
 
-                        <th pSortableColumn="price" style="width: 15%">
+                        <th pSortableColumn="cost-center" style="width: 15%">
                             Cost Center
                             <img
                                 [src]="
@@ -133,7 +133,7 @@
                             />
                         </th>
 
-                        <th pSortableColumn="quantity" style="width: 15%">
+                        <th pSortableColumn="lineManager" style="width: 15%">
                             Line Manager
                             <img
                                 [src]="

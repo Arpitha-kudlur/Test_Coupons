@@ -21,7 +21,7 @@ export class DashboardComponent {
   ngOnInit() {
         this.products = [
           {
-            'code': '123456789123456',
+            'code': '456789123456',
             'imported': '12/02/2024',
             'activated': '12/02/2024',
             'costCenter': '0000025104 Bounus auf salaren',
@@ -75,7 +75,7 @@ export class DashboardComponent {
             'url':'https://www.tec-nestle..'
           },
           {
-            'code': '789123456123456',
+            'code': '789456123456',
             'imported': '12/02/2024',
             'activated': '12/02/2024',
             'costCenter': '0000025104 Bounus auf salaren',

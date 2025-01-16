@@ -36,19 +36,20 @@ $gutter: 1rem; //for primeflex grid system
     --secondary-bg:#D8E6EF;
     --table-border:#C6C6C6;
     --td-border:#BCBCBC;
+    --table-header-bg: #F0F6FA;
     // Box shadow
     --primary-shadow:#0000001A;
 
     // font-sizes
     --font-regular:20px;
-    --font-normal:12px;
+    --font-normal:16px;
     --font-bold:900;
     --font-md:700;
+    --font-reg:600;
 }
 
 *{
-    font-family: "NestleTextTF-Book";
-    
+    font-family: "NestleTextTF-Book";   
     margin: 0;
     padding: 0;
 }
@@ -57,8 +58,19 @@ html, body{
     font-family: "NestleTextTF-Book";
 }
 h1, h2, h3, h4, h5, h6 {
-    font-family: "NestleTextTF-Bold" !important;
+    font-family: "NestleTextTF-Bold" !important;   
+}
+h1{
     font-weight: var(--font-bold) !important;
+}
+h2{
+    font-weight: var(--font-md) !important;
+}
+h3{
+    font-weight: var(--font-reg) !important;
+}
+div , p, span{
+    font-family: "NestleTextTF-Book";
 }
 .primary-btn{
     background-color: var(--primary-color);
@@ -92,11 +104,11 @@ p-table tr {
     font-size: 16px;
     padding: 14px 18px;
     text-align: left;
-    background-color: var(#F0F6FA);
+    background-color: var(--table-header-bg);
     color: var(--primary-black);
 }
 .p-datatable .p-datatable-thead > tr >th:hover{
-    background-color: #F0F6FA;
+    background-color: var(--table-header-bg);;
 }
 .p-datatable .p-datatable-tbody > tr> td {
     text-align: left;
@@ -105,5 +117,5 @@ p-table tr {
     padding: 6px 18px;
     background-color: white;
     color: var(--primary-black);
-    // border-top: 0px solid var(--td-border);
 }
+
