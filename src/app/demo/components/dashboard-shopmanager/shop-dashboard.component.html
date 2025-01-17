@@ -1,38 +1,72 @@
-<main id="dashboard-container">
+<main id="dashboard_container">
     <section class="voucher-generator-wrapper">
-      <div class="title"><span>Import Vouchers</span></div>
-      <div class="content">
-        <div class="row">
-            <div class="search-bar-container"><input type="search"/><img src="assets\images\file-search.svg" alt=""></div>
+        <div class="title"><h3>Import Vouchers</h3></div>
+        <div class="content">
+            <div class="row">
+                <div class="search-bar-container">
+                    <input
+                        type="search"
+                        placeholder="Nestle vocher list.csv"
+                    /><img src="assets\images\file-search.svg" alt="" />
+                </div>
+            </div>
+            <div class="row">
+                <button class="primary-btn"><span>Import Voucher</span></button>
+            </div>
         </div>
-        <div class="row" >
-          <button class="primary-btn"><span>Generate Voucher</span></button>
-        </div>
-      </div>
     </section>
-    <!-- <section class="voucher-history-wrapper">
-      <header>
-        <div class="title"><span>Vouchers</span></div>
-        <div class="navigation-wrapper">
-          <div class="filter-container">
-              <div class="filter-img">
-                  <img src="assets\images\filter.svg" alt="filter"/>
-              </div>
-              <div class="subtitle">
-                  <span>Filter</span>
-              </div>
-          </div>
-          <div class="excel-container">
-              <div class="excel-img">
-                  <img src="assets\images\excel.svg" alt="excel"/>
-              </div>
-              <div class="subtitle">
-                  <span>Export Excel</span>
-              </div>
-          </div>
-        </div>
-      </header>
-     
-    </section> -->
-  </main>
-  
+    <section class="voucher-history-wrapper">
+        <header>
+            <div class="title"><h3>Vouchers</h3></div>
+            <div class="navigation-wrapper">
+                <div class="filter-container sub-nav">
+                    <div class="filter-img">
+                        <img src="assets\images\filter.png" alt="filter" />
+                    </div>
+                    <div class="subtitle">
+                        <span>Filter</span>
+                    </div>
+                </div>
+
+                <div class="delete-container sub-nav">
+                    <div class="delete-img">
+                        <img src="assets/images/delete-icon.png" alt="delete" />
+                    </div>
+                    <div class="subtitle">
+                        <span>Delete</span>
+                    </div>
+                </div>
+
+                <div class="available-container sub-nav">
+                    <div class="subtitle">
+                        <span>All</span>
+                    </div>
+                    <div class="img-wrap" (click)="toggleButton()">
+                        <img
+                            *ngIf="currentButton === 'All'"
+                            src="assets/images/All-btn.png"
+                            alt="all"
+                        />
+                        <img
+                            *ngIf="currentButton === 'Available'"
+                            src="assets/images/Available-btn.png"
+                            alt="available"
+                        />
+                    </div>
+                    <div class="subtitle">
+                        <span>Available</span>
+                    </div>
+                </div>
+
+                <div class="excel-container sub-nav">
+                    <div class="excel-img">
+                        <img src="assets\images\excel.svg" alt="excel" />
+                    </div>
+                    <div class="subtitle">
+                        <span>Export Excel</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+</main>

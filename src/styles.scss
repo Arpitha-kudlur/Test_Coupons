@@ -16,71 +16,86 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/fonts/fonts.scss";
 /* You can add global styles to this file, and also import other style files */
 
-
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
-
-:root{
-
+:root {
     // colors
-    --primary-color:#0065A1;
-    --primary-white:#FFFFFF;
-    --primary-black:#000000;
-    --primary-light-black:#0A0A0A;
-    --primary-grey:#818181;
-    --primary-green:#62A05C;
-    --primary-border: #CFCFCF;
-    --secondary-border:#818181;
-    --bg-clr:#F5F5F5;
-    --secondary-bg:#D8E6EF;
-    --table-border:#C6C6C6;
-    --td-border:#BCBCBC;
-    --table-header-bg: #F0F6FA;
+    --primary-color: #0065a1;
+    --primary-white: #ffffff;
+    --primary-black: #000000;
+    --primary-light-black: #0a0a0a;
+    --primary-grey: #818181;
+    --primary-green: #62a05c;
+    --primary-pink: #df4069;
+    --primary-border: #cfcfcf;
+    --secondary-border: #818181;
+    --bg-clr: #f5f5f5;
+    --secondary-bg: #d8e6ef;
+    --table-border: #c6c6c6;
+    --td-border: #bcbcbc;
+    --table-header-bg: #f0f6fa;
+
     // Box shadow
-    --primary-shadow:#0000001A;
+    --primary-shadow: #0000001a;
 
     // font-sizes
-    --font-regular:20px;
-    --font-normal:16px;
-    --font-bold:900;
-    --font-md:700;
-    --font-reg:600;
+    --font-regular: 18px;
+    --font-normal: 16px;
+    --font-sm: 14px;
+    --font-bold: 900;
+    --font-md: 700;
+    --font-reg: 600;
+}
+@media only screen and (max-width: 500px) {
+    :root {
+        --font-normal: 12px;
+        --font-regular: 14px;
+        // --font-sm: 10px;
+    }
 }
 
-*{
-    font-family: "NestleTextTF-Book";   
+* {
+    font-family: "NestleTextTF-Book";
     margin: 0;
     padding: 0;
 }
 
-html, body{
+html,
+body {
     font-family: "NestleTextTF-Book";
 }
-h1, h2, h3, h4, h5, h6 {
-    font-family: "NestleTextTF-Bold" !important;   
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "NestleTextTF-Bold" !important;
 }
-h1{
+h1 {
     font-weight: var(--font-bold) !important;
 }
-h2{
+h2 {
     font-weight: var(--font-md) !important;
 }
-h3{
+h3 {
     font-weight: var(--font-reg) !important;
 }
-div , p, span{
+div,
+p,
+span {
     font-family: "NestleTextTF-Book";
 }
-.primary-btn{
+.primary-btn {
     background-color: var(--primary-color);
     width: 100%;
     border: 1px solid transparent;
-    padding: 10px;
+    padding: 8px 10px;
     border-radius: 6px;
     color: var(--primary-white);
     font-family: "NestleTextTF-Bold";
-    font-size: 18px;
+    font-size: var(--font-normal);
     cursor: pointer;
 }
 
@@ -96,10 +111,10 @@ img.sort-icon {
 }
 
 p-table tr {
-    // height: 28px !important;   
+    // height: 28px !important;
 }
 
-.p-datatable .p-datatable-thead > tr >th {
+.p-datatable .p-datatable-thead > tr > th {
     font-family: "NestleTextTF-Bold";
     font-size: 16px;
     padding: 14px 18px;
@@ -107,10 +122,10 @@ p-table tr {
     background-color: var(--table-header-bg);
     color: var(--primary-black);
 }
-.p-datatable .p-datatable-thead > tr >th:hover{
-    background-color: var(--table-header-bg);;
+.p-datatable .p-datatable-thead > tr > th:hover {
+    background-color: var(--table-header-bg);
 }
-.p-datatable .p-datatable-tbody > tr> td {
+.p-datatable .p-datatable-tbody > tr > td {
     text-align: left;
     font-size: 16px;
     font-family: "NestleTextTF-Book";
@@ -118,4 +133,3 @@ p-table tr {
     background-color: white;
     color: var(--primary-black);
 }
-

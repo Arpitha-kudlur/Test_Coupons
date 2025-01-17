@@ -4,6 +4,7 @@ import { NotfoundComponent } from './demo/components/notfound/notfound.component
 import { AppLayoutComponent } from "./layout/app.layout.component";
 import { MsalGuard } from '@azure/msal-angular';
 import { VoucherGeneraterComponent } from './demo/components/voucher-generater/voucher-generater.component';
+import { ShopDashboardComponent } from './demo/components/dashboard-shopmanager/shop-dashboard.component';
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { VoucherGeneraterComponent } from './demo/components/voucher-generater/v
                     { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },
                     { path: 'blocks', loadChildren: () => import('./demo/components/primeblocks/primeblocks.module').then(m => m.PrimeBlocksModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
-                    { path: 'voucher', component: VoucherGeneraterComponent}
+                    { path: 'voucher', component: VoucherGeneraterComponent},
+                    { path: 'shop-dashboard', component: ShopDashboardComponent}
                 ]
             },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },

@@ -1,5 +1,5 @@
-<main id="dashboard-container">
-    <section class="voucher-generator-wrapper ">
+<main id="dashboard_container">
+    <section class="voucher-generator-wrapper">
         <div class="title"><h4>Generate Voucher</h4></div>
         <div class="content">
             <div class="row">
@@ -59,7 +59,7 @@
                 </div>
             </div>
         </header>
-        <div class="">
+        <div class="table-container">
             <p-table
                 [value]="products"
                 sortField="price"
@@ -161,6 +161,23 @@
                     </tr>
                 </ng-template>
             </p-table>
+        </div>
+
+        <div class="data-wrapper" *ngFor="let product of products">
+            <div class="data-container card">
+                <div class="qr-holder"><img src="assets/images/Qr_code.png" alt="" /></div>
+                <div class="data-holder">
+                    <div class="data-row">{{ product.code }}</div>
+                    <div class="data-row">{{ product.costCenter }}</div>
+                    <div class="data-row">
+                        <div class="data-col"><img src="assets/images/import.png" alt="import">{{ product.imported }}</div>
+                        <div class="data-col"><img src="assets/images/activated.png" alt="activated">{{ product.activated }}</div>      
+                    </div>
+                    <div class="data-row">
+                        <div class="data-col"><img src="assets/images/lineManager.png" alt="import">{{ product.lineManager }}</div>
+                    </div>
+                </div>                
+            </div>
         </div>
     </section>
 </main>

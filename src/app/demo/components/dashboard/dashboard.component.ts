@@ -16,7 +16,9 @@ export class DashboardComponent {
   sortField: any = '';
   sortOrder: any = 1;
 
-  constructor() {}
+  constructor() {
+
+  }
 
   ngOnInit() {
         this.products = [
@@ -116,8 +118,8 @@ export class DashboardComponent {
 }
 
 onSort(event: any) {
-  this.sortField = event.field;   // Set the field being sorted
-  this.sortOrder = event.order;   // Set the order (1 = ascending, -1 = descending)
+  this.sortField = event.field;   
+  this.sortOrder = event.order;
 }
 
 }

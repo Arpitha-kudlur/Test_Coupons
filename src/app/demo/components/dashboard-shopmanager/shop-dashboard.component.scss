@@ -1,210 +1,228 @@
-#dashboard-container {
+#dashboard_container {
     background-color: var(--primary-white);
     padding: 20px;
     display: flex;
+    height: 100vh;
     justify-content: space-between;
     flex-wrap: wrap; // Allow flex items to wrap on small screens
-    
-   
+
     .voucher-generator-wrapper {
-      
-      box-shadow: 0px 0px 8px var(--primary-shadow);
-      width: 24%;
-      padding: 14px;
-      border-radius: 10px;
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-  
-      .title {
-        text-align: center;
-        margin: 10px 0px;
-  
-        span {
-          color: var(--primary-black);
-          font-weight: bold;
-          font-size: var(--font-regular);
-        }
-      }
-  
-      .content {
-        padding: 10px 0px;
-        display: flex;
-        flex-direction: column;
-        row-gap: 18px;
-        .search-bar-container{
-            width: 100%;
-            border:1px solid var(--secondary-border);
-            border-radius: 3px;
-            display: flex;
-            input{
-                width: 90%;
-                border: none;
-                outline: none;
-                
-            }
-            img{
-                width: 40px;
-                height: 30px;
-            }
-        }
-        
-        
-      }
-    }
-  
-    .voucher-history-wrapper {
-      width: 75%;
-      margin-bottom: 20px;
-  
-      header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-  
+        box-shadow: 0px 0px 8px var(--primary-shadow);
+        width: 24%;
+        padding: 14px;
+        border-radius: 10px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        height: fit-content;
+
         .title {
-          span {
-            color: var(--primary-black);
-            font-weight: bold;
-            font-size: var(--font-regular);
-          }
+            text-align: center;
+            margin: 10px 0px;
+
+            span {
+                color: var(--primary-black);
+                font-weight: bold;
+                font-size: var(--font-regular);
+            }
         }
-  
-        .navigation-wrapper {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-  
-          .filter-container {
+
+        .content {
+            padding: 10px 0px;
             display: flex;
-            gap: 6px;
-  
-            .filter-img {
-              img {
-                width: 14px;
-              }
+            flex-direction: column;
+            row-gap: 18px;
+            .search-bar-container {
+                width: 100%;
+                border: 1px solid var(--secondary-border);
+                border-radius: 3px;
+                display: flex;
+                input {
+                    width: 90%;
+                    border: none;
+                    outline: none;
+                }
+                img {
+                    width: 40px;
+                    height: 30px;
+                }
             }
-  
-            .subtitle {
-              color: var(--primary-color);
-              font-size: 12px;
-              font-weight: 550;
-            }
-          }
-  
-          .excel-container {
+        }
+    }
+
+    .voucher-history-wrapper {
+        width: 75%;
+        margin-bottom: 20px;
+
+        header {
             display: flex;
             align-items: center;
-            gap: 6px;
-            padding: 3px 8px;
-            border: 1px solid var(--primary-green);
-            border-radius: 4px;
-  
-            .excel-img {
-              img {
-                margin-top: 4px;
-                height: 14px;
-                width: 16px;
+            justify-content: space-between;
+
+            .title {
+                span {
+                    color: var(--primary-black);
+                    font-weight: bold;
+                    font-size: var(--font-regular);
+                }
+            }
+
+            .navigation-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+
+                .sub-nav {
+                    display: flex;
+                    // align-items: center;
+                    gap: 6px;
+                }
+               
+                .filter-container {
+                    .filter-img {
+                        img {
+                            width: 16px;
+                            height: 18px;
+                        }
+                    }
+                    .subtitle {
+                      span {
+                          color: var(--primary-color);
+                          font-size: var(--font-sm);
+                          font-family: "NestleTextTF-Bold";
+                      }
+                  }
+                }
+
+                .delete-container {
+                  .delete-img {
+                      img {
+                          width: 14px;
+                      }
+                  }
+                  .subtitle {
+                    span {
+                        color: var(--primary-pink);
+                        font-size: var(--font-sm);
+                        font-family: "NestleTextTF-Bold";
+                    }
+                }
               }
+
+                .excel-container {
+                    align-items: center;
+                    padding: 6px 12px;
+                    border: 1px solid var(--primary-green);
+                    border-radius: 4px;
+
+                    .excel-img {
+                        img {
+                            margin-top: 4px;
+                            height: 14px;
+                            width: 16px;
+                        }
+                    }
+
+                    .subtitle {
+                        span {
+                            color: var(--primary-green);
+                            font-size: var(--font-sm);
+                            font-family: "NestleTextTF-Bold";
+                        }
+                    }
+                }
             }
-  
-            .subtitle {
-              color: var(--primary-green);
-              font-size: 11px;
-              font-weight: 550;
-            }
-          }
         }
-      }
     }
-  
+
     // Responsive Design
     @media (max-width: 1200px) {
-      .voucher-generator-wrapper {
-        width: 30%; // Increase width on medium screens
-      }
-  
-      .voucher-history-wrapper {
-        width: 70%; // Adjust to ensure proper balance between sections
-      }
+        .voucher-generator-wrapper {
+            width: 30%; // Increase width on medium screens
+        }
+
+        .voucher-history-wrapper {
+            width: 70%; // Adjust to ensure proper balance between sections
+        }
     }
-  
+
     @media (max-width: 992px) {
-      .voucher-generator-wrapper {
-        width: 45%; // Reduce width on smaller screens
-      }
-  
-      .voucher-history-wrapper {
-        width: 55%; // Adjust to maintain balance
-      }
-  
-      .voucher-cost {
-        flex-direction: row; // Stack columns vertically for small screens
-        .selectors {
-          width: 100%; // Allow selectors to stretch
+        .voucher-generator-wrapper {
+            width: 45%; // Reduce width on smaller screens
         }
-      }
+
+        .voucher-history-wrapper {
+            width: 55%; // Adjust to maintain balance
+        }
+
+        .voucher-cost {
+            flex-direction: row; // Stack columns vertically for small screens
+            .selectors {
+                width: 100%; // Allow selectors to stretch
+            }
+        }
     }
-  
+
     @media (max-width: 768px) {
-      .voucher-generator-wrapper {
-        width: 100%; // Full width for mobile screens
-        margin-bottom: 15px;
-      }
-  
-      .voucher-history-wrapper {
-        width: 100%; // Full width for mobile screens
-      }
-  
-      .voucher-cost {
-        flex-direction: row; // Stack elements vertically
-        .selectors {
-          width: 100%; // Make the selector take full width
+        .voucher-generator-wrapper {
+            width: 100%; // Full width for mobile screens
+            margin-bottom: 15px;
         }
-  
-        .col {
-          width: 100%; // Full width for columns
-          text-align: left;
+
+        .voucher-history-wrapper {
+            width: 100%; // Full width for mobile screens
         }
-      }
-  
-      .navigation-wrapper {
-        flex-direction: row;
-        flex-wrap: wrap; // Stack filter and export buttons vertically
-        gap: 8px;
-      }
-  
-      .filter-container, .excel-container {
-        width: 100%; // Ensure filter and excel containers take full width
-        text-align: center; // Center align text for small screens
-      }
+
+        .voucher-cost {
+            flex-direction: row; // Stack elements vertically
+            .selectors {
+                width: 100%; // Make the selector take full width
+            }
+
+            .col {
+                width: 100%; // Full width for columns
+                text-align: left;
+            }
+        }
+
+        .navigation-wrapper {
+            flex-direction: row;
+            flex-wrap: wrap; // Stack filter and export buttons vertically
+            gap: 8px;
+        }
+
+        .filter-container,
+        .excel-container {
+            width: 100%; // Ensure filter and excel containers take full width
+            text-align: center; // Center align text for small screens
+        }
     }
-  
+
     @media (max-width: 480px) {
-      .voucher-generator-wrapper {
-        width: 100%; // Full width for very small screens
-      }
-  
-      .voucher-history-wrapper {
-        width: 100%; // Full width for small mobile screens
-      }
-  
-      .voucher-cost {
-        .selectors {
-          width: 100%; // Allow selectors to fill the width on very small screens
+        .voucher-generator-wrapper {
+            width: 100%; // Full width for very small screens
         }
-      }
-  
-      .navigation-wrapper {
-        flex-direction: row;
-        gap: 8px; // Reduce gap on smaller screens
-        flex-wrap: wrap;
-      }
-  
-      .filter-container, .excel-container {
-        width: 100%;
-        padding: 5px;
-        text-align: center; // Center-align icons and text
-      }
+
+        .voucher-history-wrapper {
+            width: 100%; // Full width for small mobile screens
+        }
+
+        .voucher-cost {
+            .selectors {
+                width: 100%; // Allow selectors to fill the width on very small screens
+            }
+        }
+
+        .navigation-wrapper {
+            flex-direction: row;
+            gap: 8px; // Reduce gap on smaller screens
+            flex-wrap: wrap;
+        }
+
+        .filter-container,
+        .excel-container {
+            width: 100%;
+            padding: 5px;
+            text-align: center; // Center-align icons and text
+        }
     }
-  }
-  
+}

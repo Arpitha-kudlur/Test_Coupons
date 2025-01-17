@@ -8,5 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './shop-dashboard.component.scss'
 })
 export class ShopDashboardComponent {
-
+  currentButton: string = 'All'; // Initial button state
+  
+  toggleButton(): void {
+    // Toggle between 'All' and 'Available'
+    this.currentButton =
+      this.currentButton === 'All' ? 'Available' : 'All';
+  }
 }
