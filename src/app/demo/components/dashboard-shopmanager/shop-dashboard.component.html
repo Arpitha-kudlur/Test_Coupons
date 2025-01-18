@@ -42,16 +42,15 @@
                         <span>All</span>
                     </div>
                     <div class="img-wrap" (click)="toggleButton()">
-                        <img
-                            *ngIf="currentButton === 'All'"
-                            src="assets/images/All-btn.png"
-                            alt="all"
-                        />
-                        <img
-                            *ngIf="currentButton === 'Available'"
-                            src="assets/images/Available-btn.png"
-                            alt="available"
-                        />
+                        <span *ngIf="currentButton === 'All'">
+                            <img src="assets/images/All-btn.png" alt="all" />
+                        </span>
+                        <span *ngIf="currentButton === 'Available'">
+                            <img
+                                src="assets/images/Available-btn.png"
+                                alt="available"
+                            />
+                        </span>
                     </div>
                     <div class="subtitle">
                         <span>Available</span>
@@ -68,5 +67,202 @@
                 </div>
             </div>
         </header>
+
+        <div class="table-container">
+            <p-table
+                [value]="products"
+                sortField="price"
+                [sortOrder]="-1"
+                (onSort)="onSort($event)"
+            >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 1%"><input type="checkbox" /></th>
+                        <th pSortableColumn="code" style="width: 10%">
+                            EAN code
+                            <img
+                                [src]="
+                                    sortField === 'code' && sortOrder === 1
+                                        ? 'assets/images/Up arrow.png'
+                                        : sortField === 'code' &&
+                                          sortOrder === -1
+                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                        : 'assets/images/Sort.png'
+                                "
+                                alt="Sort Icon"
+                                class="sort-icon"
+                            />
+                        </th>
+
+                        <th pSortableColumn="lineManager" style="width: 10%">
+                            Line Manager
+                            <img
+                                [src]="
+                                    sortField === 'lineManager' &&
+                                    sortOrder === 1
+                                        ? 'assets/images/Up arrow.png'
+                                        : sortField === 'lineManager' &&
+                                          sortOrder === -1
+                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                        : 'assets/images/Sort.png'
+                                "
+                                alt="Sort Icon"
+                                class="sort-icon"
+                            />
+                        </th>
+
+                        <th pSortableColumn="cost-center" style="width: 15%">
+                            Cost Center
+                            <img
+                                [src]="
+                                    sortField === 'cost-center' &&
+                                    sortOrder === 1
+                                        ? 'assets/images/Up arrow.png'
+                                        : sortField === 'cost-center' &&
+                                          sortOrder === -1
+                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                        : 'assets/images/Sort.png'
+                                "
+                                alt="Sort Icon"
+                                class="sort-icon"
+                            />
+                        </th>
+
+                        <th pSortableColumn="imported" style="width: 10%">
+                            Imported on
+                            <img
+                                [src]="
+                                    sortField === 'imported' && sortOrder === 1
+                                        ? 'assets/images/Up arrow.png'
+                                        : sortField === 'imported' &&
+                                          sortOrder === -1
+                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                        : 'assets/images/Sort.png'
+                                "
+                                alt="Sort Icon"
+                                class="sort-icon"
+                            />
+                        </th>
+                        <th pSortableColumn="activated" style="width: 10%">
+                            Activated on
+                            <img
+                                [src]="
+                                    sortField === 'activated' && sortOrder === 1
+                                        ? 'assets/images/Up arrow.png'
+                                        : sortField === 'activated' &&
+                                          sortOrder === -1
+                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                        : 'assets/images/Sort.png'
+                                "
+                                alt="Sort Icon"
+                                class="sort-icon"
+                            />
+                        </th>
+
+                        <th pSortableColumn="Status" style="width: 10%">
+                            Status
+                            <img
+                                [src]="
+                                    sortField === 'Status' && sortOrder === 1
+                                        ? 'assets/images/Up arrow.png'
+                                        : sortField === 'Status' &&
+                                          sortOrder === -1
+                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                        : 'assets/images/Sort.png'
+                                "
+                                alt="Sort Icon"
+                                class="sort-icon"
+                            />
+                        </th>
+
+                        <th pSortableColumn="url" style="width: 15%">
+                            URL
+                            <img
+                                [src]="
+                                    sortField === 'url' && sortOrder === 1
+                                        ? 'assets/images/Up arrow.png'
+                                        : sortField === 'url' &&
+                                          sortOrder === -1
+                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                        : 'assets/images/Sort.png'
+                                "
+                                alt="Sort Icon"
+                                class="sort-icon"
+                            />
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-product>
+                    <tr>
+                        <td>
+                            <input
+                                type="checkbox"
+                                *ngIf="product.status === 'Available'"
+                            />
+                        </td>
+                        <td>{{ product.code }}</td>
+                        <td>{{ product.lineManager }}</td>
+                        <td>{{ product.costCenter }}</td>
+                        <td>{{ product.imported }}</td>
+                        <td>{{ product.activated }}</td>
+                        <td>
+                            <span
+                                [ngClass]="
+                                    product.status == 'Available'
+                                        ? 'available'
+                                        : 'assigned'
+                                "
+                                class="status-data"
+                                >{{ product.status }}</span
+                            >
+                        </td>
+                        <td class="data-url">{{ product.url }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <div class="data-wrapper" *ngFor="let product of products">
+            <div class="data-container card">
+                <div class="qr-holder">
+                    <img src="assets/images/Qr_code.png" alt="" />
+                </div>
+                <div class="data-holder">
+                    <div class="data-row">
+                        <div class="data-col" style="font-family: 'NestleTextTF-Bold'; font-weight: bold;">
+                            {{ product.lineManager }}
+                        </div>
+                        <div class="data-col">
+                            <span
+                                [ngClass]="
+                                    product.status == 'Available'
+                                        ? 'available'
+                                        : 'assigned'
+                                "
+                                class="status-data"
+                                >{{ product.status }}</span
+                            >
+                        </div>
+                    </div>
+                    <div class="data-row">{{ product.code }}</div>
+                    <div class="data-row">{{ product.costCenter }}</div>
+                    <div class="data-row">
+                        <div class="data-col">
+                            <img
+                                src="assets/images/import.png"
+                                alt="import"
+                            />{{ product.imported }}
+                        </div>
+                        <div class="data-col">
+                            <img
+                                src="assets/images/activated.png"
+                                alt="activated"
+                            />{{ product.activated }}
+                        </div>
+                    </div>
+                    <div class="data-row data-url">{{ product.url }}</div>
+                </div>
+            </div>
+        </div>
     </section>
 </main>

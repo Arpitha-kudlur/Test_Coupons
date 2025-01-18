@@ -43,7 +43,7 @@
             <div class="navigation-wrapper">
                 <div class="filter-container">
                     <div class="filter-img">
-                        <img src="assets\images\filter.svg" alt="filter" />
+                        <img src="assets\images\filter.png" alt="filter" />
                     </div>
                     <div class="subtitle">
                         <span>Filter</span>
@@ -59,6 +59,8 @@
                 </div>
             </div>
         </header>
+
+        <!-- table for desktop -->
         <div class="table-container">
             <p-table
                 [value]="products"
@@ -162,7 +164,8 @@
                 </ng-template>
             </p-table>
         </div>
-
+        
+         <!-- data for mobile view -->
         <div class="data-wrapper" *ngFor="let product of products">
             <div class="data-container card">
                 <div class="qr-holder"><img src="assets/images/Qr_code.png" alt="" /></div>
