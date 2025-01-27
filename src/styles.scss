@@ -16,8 +16,8 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/fonts/fonts.scss";
 /* You can add global styles to this file, and also import other style files */
 
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
+// @import "primeng/resources/primeng.css";
 
 :root {
     // colors
@@ -55,11 +55,11 @@ $gutter: 1rem; //for primeflex grid system
     }
 }
 
-* {
-    font-family: "NestleTextTF-Book";
-    margin: 0;
-    padding: 0;
-}
+// * {
+//     font-family: "NestleTextTF-Book";
+//     margin: 0;
+//     padding: 0;
+// }
 
 html,
 body {
@@ -95,6 +95,7 @@ span {
     border-radius: 6px;
     color: var(--primary-white);
     font-family: "NestleTextTF-Bold";
+    // font-weight: bold !important;
     font-size: var(--font-normal);
     cursor: pointer;
 }
@@ -111,6 +112,7 @@ img.sort-icon {
 }
 
 p-table tr {
+    border-bottom: 1px solid #ddd;
     // height: 28px !important;
 }
 
@@ -133,3 +135,51 @@ p-table tr {
     background-color: white;
     color: var(--primary-black);
 }
+
+// dashboard stylings
+.search-bar-container {
+    width: 100%;
+    border: 1px solid var(--secondary-border);
+    border-radius: 3px;
+    display: flex;
+    padding: 2px 4px;
+    input {
+        width: 90%;
+        border: none;
+        outline: none;
+    }
+    img {
+        width: 40px;
+        height: 30px;
+    }
+}
+
+.custom-switch {
+    background-color: #0065a1;
+    border-color: #0065a1;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .custom-switch::before {
+  content: "";
+//   position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background-color: #0065a1; /* Default blue for the button */
+  border-radius: 50%; /* Circular button */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+  /* Color when checked */
+  .custom-switch:checked {
+    background-color: green;
+    border-color: green;
+  }
+  
+  /* Remove focus border and box shadow */
+  .custom-switch:focus {
+    outline: none;
+    box-shadow: none;
+  }

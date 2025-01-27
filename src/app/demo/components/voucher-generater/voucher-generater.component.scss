@@ -4,7 +4,7 @@
   width: 100%;
   height: 100vh;
   justify-content: space-around;
-  background-color: red;
+  // background-color: red;
   .back-btn-container{
     
     img{
@@ -57,24 +57,21 @@
         }
         .user {
           color: var(--primary-black);
-          font-size: 14px;
+          font-size: 16px;
           font-weight: 500;
           margin-bottom: 14px;
-          
+          .username {
+
+          }
           .user-mail {
-            font-size: 16px;
+            font-size: 18px;
           }
         }
-        .transaction-id {
-          font-size: 28px;
-          font-weight: bold;
-          color: var(--primary-black);
-          margin: 4px 0px 8px 0px;
-        }
+       
         .date-place-wrapper {
           display: flex;
           justify-content: space-between;
-          font-size: var(--font-normal);
+          font-size: var(--font-regular);
           color: var(--primary-black);
         }
       }
@@ -84,7 +81,7 @@
         .qr-code {
           img {
             // margin: 8px 0px;
-            width: 130px;
+            width: 180px;
           }
           
         }
@@ -100,7 +97,7 @@
           .trans-link {
             span {
               color: var(--primary-color);
-              font-size: 11px;
+              font-size: 16px;
             }
           }
           .copy-container {
@@ -115,13 +112,13 @@
             width: fit-content;
             .copy-img{
               img{
-                width: 10px;
+                width: 12px;
               }
             }
             .title{
               span {
                 color: #242424;
-                font-size: 11px;
+                font-size: 12px;
               }
             }
           }

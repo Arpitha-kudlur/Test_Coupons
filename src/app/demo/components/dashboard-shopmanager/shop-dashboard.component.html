@@ -1,5 +1,5 @@
-<main id="dashboard_container">
-    <section class="voucher-generator-wrapper">
+<!-- <main id="dashboard_container">
+    <section class="voucher-generator-wrapper card">
         <div class="title"><h3>Import Vouchers</h3></div>
         <div class="content">
             <div class="row">
@@ -11,14 +11,15 @@
                 </div>
             </div>
             <div class="row">
-                <button class="primary-btn"><span>Import Voucher</span></button>
+                <button class="primary-btn">Import Voucher</button>
             </div>
         </div>
     </section>
     <section class="voucher-history-wrapper">
         <header>
-            <div class="title"><h3>Vouchers</h3></div>
+            <div class="title desktop-only"><h3>Vouchers</h3></div>
             <div class="navigation-wrapper">
+                <div class="title mobile-only"><h3>Vouchers</h3></div>
                 <div class="filter-container sub-nav">
                     <div class="filter-img">
                         <img src="assets\images\filter.png" alt="filter" />
@@ -222,7 +223,7 @@
             </p-table>
         </div>
 
-        <div class="data-wrapper" *ngFor="let product of products">
+        <div class="data-wrapper"  *ngFor="let product of products">
             <div class="data-container card">
                 <div class="qr-holder">
                     <img src="assets/images/Qr_code.png" alt="" />
@@ -264,5 +265,316 @@
                 </div>
             </div>
         </div>
+
     </section>
-</main>
+</main>  -->
+
+<div id="shop_dashboard" class="grid col-12">
+    <!-- <div class="container"> -->
+        <div class="row flex flex-wrap col-12">
+           
+                <!-- <div class="col-12"> -->
+                    <div class="col xl:col-3 lg:col-3 md:col-3 sm:col-12 card text-center">
+                        <h4>Import Vouchers</h4>
+                        <div class="search-bar-container mb-3">
+                            <input
+                                type="search"
+                                placeholder="Nestle vocher list.csv"
+                            /><img src="assets\images\file-search.svg" alt="" />
+                        </div>
+                        <button
+                            pButton
+                            pRipple
+                            type="button"
+                            label="Primary"
+                            class="primary-btn"
+                        >
+                            Import Voucher
+                        </button>
+                    </div>
+         
+                    <!-- table and Header only for desktop view -->
+                    <div class="col xl:col-9 lg:col-9 md:col-9 desktop-only">
+                        <div class="flex justify-content-between flex-*-wrap">
+                            <h4>Vouchers</h4>
+                            <div class="flex gap-3">
+                                <button
+                                    pButton
+                                    pRipple
+                                    icon="pi pi-check"
+                                    label="Filter"
+                                    class="p-button p-button-primary"
+                                >
+                                    Filter
+                                </button>
+                                <button pButton pRipple type="button" label="Danger" class="p-button-text p-button-danger ">Delete</button>
+
+                                <p-toggleswitch [(ngModel)]="checked"
+                                    >Hello</p-toggleswitch
+                                >
+                                <button type="button" class="btn btn-outline-success">
+                                    Export Excel
+                                </button>
+                            </div>
+                        </div>
+         
+                        <!-- table only for desktop -->
+                        <div class="table-container">
+                            <p-table
+                                [value]="products"
+                                sortField="price"
+                                [sortOrder]="-1"
+                                (onSort)="onSort($event)"
+                                [responsiveLayout]="'scroll'"
+                            >
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th style="width: 1%">
+                                            <input type="checkbox" />
+                                        </th>
+                                        <th pSortableColumn="code" style="width: 10%">
+                                            EAN code
+                                            <img
+                                                [src]="
+                                                    sortField === 'code' &&
+                                                    sortOrder === 1
+                                                        ? 'assets/images/Up arrow.png'
+                                                        : sortField === 'code' &&
+                                                          sortOrder === -1
+                                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                                        : 'assets/images/Sort.png'
+                                                "
+                                                alt="Sort Icon"
+                                                class="sort-icon"
+                                            />
+                                        </th>
+         
+                                        <th
+                                            pSortableColumn="lineManager"
+                                            style="width: 10%"
+                                        >
+                                            Line Manager
+                                            <img
+                                                [src]="
+                                                    sortField === 'lineManager' &&
+                                                    sortOrder === 1
+                                                        ? 'assets/images/Up arrow.png'
+                                                        : sortField === 'lineManager' &&
+                                                          sortOrder === -1
+                                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                                        : 'assets/images/Sort.png'
+                                                "
+                                                alt="Sort Icon"
+                                                class="sort-icon"
+                                            />
+                                        </th>
+         
+                                        <th
+                                            pSortableColumn="cost-center"
+                                            style="width: 15%"
+                                        >
+                                            Cost Center
+                                            <img
+                                                [src]="
+                                                    sortField === 'cost-center' &&
+                                                    sortOrder === 1
+                                                        ? 'assets/images/Up arrow.png'
+                                                        : sortField === 'cost-center' &&
+                                                          sortOrder === -1
+                                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                                        : 'assets/images/Sort.png'
+                                                "
+                                                alt="Sort Icon"
+                                                class="sort-icon"
+                                            />
+                                        </th>
+         
+                                        <th
+                                            pSortableColumn="imported"
+                                            style="width: 10%"
+                                        >
+                                            Imported on
+                                            <img
+                                                [src]="
+                                                    sortField === 'imported' &&
+                                                    sortOrder === 1
+                                                        ? 'assets/images/Up arrow.png'
+                                                        : sortField === 'imported' &&
+                                                          sortOrder === -1
+                                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                                        : 'assets/images/Sort.png'
+                                                "
+                                                alt="Sort Icon"
+                                                class="sort-icon"
+                                            />
+                                        </th>
+                                        <th
+                                            pSortableColumn="activated"
+                                            style="width: 10%"
+                                        >
+                                            Activated on
+                                            <img
+                                                [src]="
+                                                    sortField === 'activated' &&
+                                                    sortOrder === 1
+                                                        ? 'assets/images/Up arrow.png'
+                                                        : sortField === 'activated' &&
+                                                          sortOrder === -1
+                                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                                        : 'assets/images/Sort.png'
+                                                "
+                                                alt="Sort Icon"
+                                                class="sort-icon"
+                                            />
+                                        </th>
+         
+                                        <th pSortableColumn="Status" style="width: 10%">
+                                            Status
+                                            <img
+                                                [src]="
+                                                    sortField === 'Status' &&
+                                                    sortOrder === 1
+                                                        ? 'assets/images/Up arrow.png'
+                                                        : sortField === 'Status' &&
+                                                          sortOrder === -1
+                                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                                        : 'assets/images/Sort.png'
+                                                "
+                                                alt="Sort Icon"
+                                                class="sort-icon"
+                                            />
+                                        </th>
+         
+                                        <th pSortableColumn="url" style="width: 15%">
+                                            URL
+                                            <img
+                                                [src]="
+                                                    sortField === 'url' &&
+                                                    sortOrder === 1
+                                                        ? 'assets/images/Up arrow.png'
+                                                        : sortField === 'url' &&
+                                                          sortOrder === -1
+                                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                                        : 'assets/images/Sort.png'
+                                                "
+                                                alt="Sort Icon"
+                                                class="sort-icon"
+                                            />
+                                        </th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-product>
+                                    <tr>
+                                        <td>
+                                            <input
+                                                type="checkbox"
+                                                *ngIf="product.status === 'Available'"
+                                            />
+                                        </td>
+                                        <td>{{ product.code }}</td>
+                                        <td>{{ product.lineManager }}</td>
+                                        <td>{{ product.costCenter }}</td>
+                                        <td>{{ product.imported }}</td>
+                                        <td>{{ product.activated }}</td>
+                                        <td>
+                                            <span
+                                                [ngClass]="
+                                                    product.status == 'Available'
+                                                        ? 'available'
+                                                        : 'assigned'
+                                                "
+                                                class="status-data"
+                                                >{{ product.status }}</span
+                                            >
+                                        </td>
+                                        <td class="data-url">{{ product.url }}</td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+                    </div>
+         
+                    <!-- Table and header for mobile only -->
+                    <div class="sm:col-12 mobile-only" >
+                        <header>
+                            <div
+                                class="flex align-items-center justify-content-between"
+                            >
+                                <h4>Vouchers</h4>
+                                <button type="button" class="btn btn-outline-success">
+                                    Export Excel
+                                </button>
+                            </div>
+                            <div class="flex align-items-center justify-content-between">
+                                <div>
+                                    <button
+                                        type="button"
+                                        class="btn btn-outline-danger mr-2"
+                                    >
+                                        Delete
+                                    </button>
+                                    <button
+                                        type="button"
+                                        class="btn btn-outline-primary"
+                                    >
+                                        Filter
+                                    </button>
+                                </div>
+                                <div>
+                                    <!-- toggle switch has to come -->
+                                    Available
+                                </div>
+                            </div>
+                        </header>
+                        <section class="data-wrapper"  *ngFor="let product of products" >
+                            
+                                <div class="data-container card">
+                                    <div class="qr-holder">
+                                        <img src="assets/images/Qr_code.png" alt="" />
+                                    </div>
+                                    <div class="data-holder">
+                                        <div class="data-row">
+                                            <div class="data-col" style="font-family: 'NestleTextTF-Bold'; font-weight: bold;">
+                                                {{ product.lineManager }}
+                                            </div>
+                                            <div class="data-col flex justify-right">
+                                                <span
+                                                    [ngClass]="
+                                                        product.status == 'Available'
+                                                            ? 'available'
+                                                            : 'assigned'
+                                                    "
+                                                    class="status-data"
+                                                    >{{ product.status }}</span
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="data-row">{{ product.code }}</div>
+                                        <div class="data-row">{{ product.costCenter }}</div>
+                                        <div class="data-row">
+                                            <div class="data-col">
+                                                <img
+                                                    src="assets/images/import.png"
+                                                    alt="import"
+                                                />{{ product.imported }}
+                                            </div>
+                                            <div class="data-col">
+                                                <img
+                                                    src="assets/images/activated.png"
+                                                    alt="activated"
+                                                />{{ product.activated }}
+                                            </div>
+                                        </div>
+                                        <div class="data-row data-url">{{ product.url }}</div>
+                                    </div>
+                                </div>
+                           
+                        </section>
+                    </div>
+                <!-- </div> -->
+           
+        </div>
+
+    <!-- </div> -->
+</div>
+
