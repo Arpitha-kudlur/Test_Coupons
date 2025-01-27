@@ -15,10 +15,11 @@
     .right-content-container{
         display: flex;
         gap: 10px;
+        align-items: center;
         
         cursor: pointer;
         .user-pic{
-            
+            display: flex;
             img{
                 width: 14px;
             }

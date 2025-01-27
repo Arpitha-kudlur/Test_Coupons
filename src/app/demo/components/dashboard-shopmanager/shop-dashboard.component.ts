@@ -9,6 +9,7 @@ import {
     FormsModule,
 } from '@angular/forms';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 @Component({
     selector: 'app-shop-dashboard',
     standalone: true,
@@ -19,6 +20,7 @@ import { InputSwitchModule } from 'primeng/inputswitch';
         ReactiveFormsModule,
         FormsModule,
         InputSwitchModule,
+        
     ],
     templateUrl: './shop-dashboard.component.html',
     styleUrl: './shop-dashboard.component.scss',
@@ -30,7 +32,7 @@ export class ShopDashboardComponent {
     sortField: any = '';
     sortOrder: any = 1;
     formGroup: FormGroup | undefined;
-    checked: boolean = false;
+    toggleValue: boolean = false;
     value1: any;
 
     value2: any;

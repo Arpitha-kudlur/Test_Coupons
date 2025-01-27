@@ -113,7 +113,7 @@ img.sort-icon {
 
 p-table tr {
     border-bottom: 1px solid #ddd;
-    // height: 28px !important;
+    height: 56px !important;
 }
 
 .p-datatable .p-datatable-thead > tr > th {
@@ -134,8 +134,32 @@ p-table tr {
     padding: 6px 18px;
     background-color: white;
     color: var(--primary-black);
+    
 }
+.p-inputswitch {
+    display: flex;
+    align-items: center;
+    top: 2px;
+}
+.p-inputswitch-slider {
+    height: 20px;
+    width: 40px;
+    background-color: #0065a1 !important; 
+  }
+  
+  .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background-color: green !important;
+  }
 
+  .p-inputswitch .p-inputswitch-slider:before {
+    background: #ffffff;
+    width: 1rem;
+    height: 1rem;
+    left: 0.25rem;
+    margin-top: -0.5rem;
+    border-radius: 50%;
+    transition-duration: 0.2s;
+}
 // dashboard stylings
 .search-bar-container {
     width: 100%;
