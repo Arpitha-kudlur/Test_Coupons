@@ -10,6 +10,10 @@
     .left-content-container{
         .logo-img{
             width: 130px;
+            cursor: pointer;
+        }
+        .logo-img:hover {
+          transition: cubic-bezier(0.075, 0.82, 0.165, 1);
         }
     }
     .right-content-container{
@@ -67,6 +71,10 @@
         width: 120px;
       }
     }
-   
+    .right-content-container{
+      .user-name , .dropdown{
+        display: none;
+      }
+    }
   }
 }

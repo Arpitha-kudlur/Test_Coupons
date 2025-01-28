@@ -49,17 +49,12 @@ $gutter: 1rem; //for primeflex grid system
 }
 @media only screen and (max-width: 500px) {
     :root {
-        --font-normal: 12px;
-        --font-regular: 14px;
+        --font-normal: 14px;
+        --font-regular: 16px;
         // --font-sm: 10px;
     }
 }
 
-// * {
-//     font-family: "NestleTextTF-Book";
-//     margin: 0;
-//     padding: 0;
-// }
 
 html,
 body {
@@ -102,7 +97,9 @@ span {
 .p-button-text {
     font-family: "NestleTextTF-Book" !important;
 }
-
+.pi {
+    width: 18px !important;
+}
 .green {
     color: var(--primary-green);
 }
@@ -155,7 +152,7 @@ p-table tr {
     top: 2px;
 }
 .p-inputswitch-slider {
-    height: 20px;
+    height: 22px;
     width: 40px;
     background-color: #0065a1 !important; 
   }

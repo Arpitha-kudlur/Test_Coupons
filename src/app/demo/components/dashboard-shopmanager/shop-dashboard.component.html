@@ -513,25 +513,52 @@
             <header>
                 <div class="flex align-items-center justify-content-between">
                     <h4>Vouchers</h4>
-                    <button type="button" class="btn btn-outline-success">
-                        Export Excel
+                    <button
+                        type="button"
+                        class="p-button p-button-outlined p-button-success green"
+                    >
+                        <img
+                            src="assets/images/excel.svg"
+                            alt="excel"
+                            class="btn-icon mr-2"
+                        />
+                        <span>Export Excel</span>
                     </button>
                 </div>
-                <div class="flex align-items-center justify-content-between">
+
+                <div class="flex align-center justify-between">
                     <div>
                         <button
-                            type="button"
-                            class="btn btn-outline-danger mr-2"
+                            pButton
+                            pRipple
+                            label="Delete"
+                            class="p-button p-button-text p-button-danger"
                         >
-                            Delete
+                            <i class="pi pi-trash mr-2"></i>
+                            <span>Delete</span>
                         </button>
-                        <button type="button" class="btn btn-outline-primary">
-                            Filter
+
+                        <button
+                            pButton
+                            pRipple
+                            icon="pi pi-check"
+                            label="Filter"
+                            class="p-button p-button-text p-button-primary blue"
+                        >
+                            <i class="pi pi-filter mr-2"></i>
+                            <span>Filter</span>
                         </button>
                     </div>
-                    <div>
-                        <!-- toggle switch has to come -->
-                        Available
+                    <div
+                        class="flex justify-content-center align-items-center gap-2"
+                    >
+                        <div class="toggleSwitchName">All</div>
+                        <p-inputSwitch
+                            [(ngModel)]="toggleValue"
+                            onLabel="On"
+                            offLabel="Off"
+                        ></p-inputSwitch>
+                        <div class="toggleSwitchName">Available</div>
                     </div>
                 </div>
             </header>
