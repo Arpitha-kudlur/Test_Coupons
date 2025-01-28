@@ -63,7 +63,7 @@ $gutter: 1rem; //for primeflex grid system
 
 html,
 body {
-    font-family: "NestleTextTF-Book";
+    font-family: "NestleTextTF-Book" !important;
 }
 h1,
 h2,
@@ -99,7 +99,20 @@ span {
     font-size: var(--font-normal);
     cursor: pointer;
 }
+.p-button-text {
+    font-family: "NestleTextTF-Book" !important;
+}
 
+.green {
+    color: var(--primary-green);
+}
+.blue {
+    color: var(--primary-color) !important;
+}
+
+.btn-icon {
+    width: 16px;
+}
 img.sort-icon {
     margin-left: 10px;
     height: 10px;
