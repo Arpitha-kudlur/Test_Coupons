@@ -34,13 +34,14 @@
         }
     }.dropdown-menu {
         position: absolute;
-        top: 50px; /* Adjust based on your header height */
-        right: 0;
-        background-color: #fff;
+        top: 40px;
+        right: 0px;
+        background-color: #FFEBEB;
         border: 1px solid #ddd;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        box-shadow: 0 3px 6px #00000029;
         padding: 5px;
-        width: 150px;
+        width: 100px;
         z-index: 100;
       }
       

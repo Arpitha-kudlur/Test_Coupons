@@ -661,7 +661,13 @@
 //       }
 //     }
 //   }
-
+#shop_dashboard {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    // background-color: blueviolet;
+    // height: 100vh;
+}
 .desktop-only {
     display: block;
 }
