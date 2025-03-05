@@ -18,7 +18,7 @@ import { ShopDashboardComponent } from './demo/components/dashboard-shopmanager/
                     { path: 'documentation', loadChildren: () => import('./demo/components/documentation/documentation.module').then(m => m.DocumentationModule) },
                     { path: 'blocks', loadChildren: () => import('./demo/components/primeblocks/primeblocks.module').then(m => m.PrimeBlocksModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
-                    { path: 'voucher', component: VoucherGeneraterComponent},
+                    { path: 'voucher/:id', component: VoucherGeneraterComponent},
                     { path: 'shop-dashboard', component: ShopDashboardComponent}
                 ]
             },

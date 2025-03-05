@@ -1,186 +1,231 @@
-<div id="dashboard_container">
-    <section class="voucher-generator-wrapper card">
-        <div class="title"><h4>Generate Voucher</h4></div>
-        <div class="content">
-            <div class="row">
-                <div class="user-name content-body">
-                    <span>Nikolas Eric</span>
-                </div>
-                <div class="user-mail content-body">
-                    <span>nikolaseric.jason&#64;nestle.com</span>
-                </div>
+<div id="lineManager_dashboard">
+    <div
+        
+        class="row flex flex-wrap col-12 p-2 md:p-5 sm:p-0 dashboard_container"
+    >
+        <div class="col xl:col-3 lg:col-3 md:col-10 sm:col-12 card text-center">
+            <h4>Generate Voucher</h4>
+            <div class="row text-left">
+                <div class="mb-1">Nikolas Eric</div>
+                <div>nikolaseric.jason&#64;nestle.com</div>
             </div>
-            <div class="row1 voucher-cost">
-                <div class="col1">
-                    <div class="content-body subtitle">
-                        <span>Cost Center</span>
-                    </div>
-                    <div>
-                        <select name="Cost Center" id="" class="selectors">
-                            <option>Nestle Shop</option>
-                            <option>Nestle Shop</option>
-                            <option>Nestle Shop</option>
+            <div class="row text-left flex my-2">
+                <div class="col lg:col-6 md:col-6 pl-0">
+                    <div class="row mb-2">Cost Center</div>
+                    <div class="row">
+                        <select [(ngModel)]="selectedCostCenter" class="p-1 w-10 selectors">
+                            <option value="" disabled selected>Select Cost Center</option>
+                            <option *ngFor="let center of costCenters" [value]="center">
+                                {{ center }}
+                            </option>
                         </select>
                     </div>
                 </div>
-                <div class="col2 voucher-amt-wrapper">
-                    <div class="content-body subtitle">
-                        <span>Voucher amount</span>
-                    </div>
-                    <div class="content-body"><span>50 CHF</span></div>
+                <div class="col lg:col-6 md:col-6 pr-0">
+                    <div class="row mb-2">Voucher amount</div>
+                    <div class="row">50 CHF</div>
                 </div>
             </div>
-            <div class="row btn-container">
-                <button [routerLink]="['/voucher']" class="primary-btn">
-                    Generate Voucher
-                </button>
-            </div>
+            <!-- <p-toast></p-toast> -->
+            <button
+                (click)="generateVoucher()"
+                
+                pButton
+                pRipple
+                type="button"
+                label="Generate Voucher"
+                class="primary-btn"
+            ></button>
         </div>
-    </section>
-    <section class="voucher-history-wrapper">
-        <header>
-            <div class="title"><h4>Voucher History</h4></div>
-            <div class="navigation-wrapper">
-                <div class="filter-container">
-                    <div class="filter-img">
-                        <img src="assets\images\filter.png" alt="filter" />
-                    </div>
-                    <div class="subtitle">
-                        <span>Filter</span>
-                    </div>
-                </div>
-                <div class="excel-container">
-                    <div class="excel-img">
-                        <img src="assets\images\excel.svg" alt="excel" />
-                    </div>
-                    <div class="subtitle">
+
+        <div class="col xl:col-9 lg:col-9 md:col-12">
+            <!-- navigation for lineManager_dashboard -->
+            <div class="flex justify-content-between flex-*-wrap">
+                <h4>Voucher History</h4>
+                <div class="flex gap-2">
+                    <button
+                        pButton
+                        pRipple
+                        icon="pi pi-filter"
+                        label="Filter"
+                        class="p-button p-button-text p-button-primary blue"
+                    >
+                        <!-- <i class="pi pi-filter mr-2"></i> -->
+                    </button>
+
+                    <button
+                        type="button"
+                        label="Export Excel"
+                        class="p-button p-button-outlined p-button-success green"
+                    >
+                        <img
+                            src="assets/images/excel.svg"
+                            alt="excel"
+                            class="pi pi-trash btn-icon mr-2"
+                        />
                         <span>Export Excel</span>
-                    </div>
+                    </button>
                 </div>
             </div>
-        </header>
 
-        <!-- table for desktop -->
-        <div class="table-container">
-            <p-table
-                [value]="products"
-                sortField="price"
-                [sortOrder]="-1"
-                [tableStyle]="{ 'min-width': '60rem' }"
-                (onSort)="onSort($event)"
-            >
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th pSortableColumn="code" style="width: 15%">
-                            EAN code
-                            <img
-                                [src]="
-                                    sortField === 'code' && sortOrder === 1
-                                        ? 'assets/images/Up arrow.png'
-                                        : sortField === 'code' &&
-                                          sortOrder === -1
-                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
-                                        : 'assets/images/Sort.png'
-                                "
-                                alt="Sort Icon"
-                                class="sort-icon"
-                            />
-                        </th>
+            <!-- table for desktop -->
 
-                        <th pSortableColumn="imported" style="width: 15%">
-                            Date of Import
-                            <img
-                                [src]="
-                                    sortField === 'imported' && sortOrder === 1
-                                        ? 'assets/images/Up arrow.png'
-                                        : sortField === 'imported' &&
-                                          sortOrder === -1
-                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
-                                        : 'assets/images/Sort.png'
-                                "
-                                alt="Sort Icon"
-                                class="sort-icon"
-                            />
-                        </th>
-                        <th pSortableColumn="activated" style="width: 15%">
-                            Date of Activation
-                            <img
-                                [src]="
-                                    sortField === 'activated' && sortOrder === 1
-                                        ? 'assets/images/Up arrow.png'
-                                        : sortField === 'activated' &&
-                                          sortOrder === -1
-                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
-                                        : 'assets/images/Sort.png'
-                                "
-                                alt="Sort Icon"
-                                class="sort-icon"
-                            />
-                        </th>
+            <div class="table-container desktop-only">
+                <p-table
+                    [value]="voucherHistory"
+                    sortField="price"
+                    [sortOrder]="-1"
+                    (onSort)="onSort($event)"
+                >
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th pSortableColumn="code">
+                                EAN code
+                                <img
+                                    [src]="
+                                        sortField === 'code' && sortOrder === 1
+                                            ? 'assets/images/Up arrow.png'
+                                            : sortField === 'code' &&
+                                              sortOrder === -1
+                                            ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                            : 'assets/images/Sort.png'
+                                    "
+                                    alt="Sort Icon"
+                                    class="sort-icon"
+                                />
+                            </th>
 
-                        <th pSortableColumn="cost-center" style="width: 15%">
-                            Cost Center
-                            <img
-                                [src]="
-                                    sortField === 'cost-center' &&
-                                    sortOrder === 1
-                                        ? 'assets/images/Up arrow.png'
-                                        : sortField === 'cost-center' &&
-                                          sortOrder === -1
-                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
-                                        : 'assets/images/Sort.png'
-                                "
-                                alt="Sort Icon"
-                                class="sort-icon"
-                            />
-                        </th>
+                            <th pSortableColumn="imported">
+                                Date of Import
+                                <img
+                                    [src]="
+                                        sortField === 'imported' &&
+                                        sortOrder === 1
+                                            ? 'assets/images/Up arrow.png'
+                                            : sortField === 'imported' &&
+                                              sortOrder === -1
+                                            ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                            : 'assets/images/Sort.png'
+                                    "
+                                    alt="Sort Icon"
+                                    class="sort-icon"
+                                />
+                            </th>
+                            <th pSortableColumn="activated">
+                                Date of Activation
+                                <img
+                                    [src]="
+                                        sortField === 'activated' &&
+                                        sortOrder === 1
+                                            ? 'assets/images/Up arrow.png'
+                                            : sortField === 'activated' &&
+                                              sortOrder === -1
+                                            ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                            : 'assets/images/Sort.png'
+                                    "
+                                    alt="Sort Icon"
+                                    class="sort-icon"
+                                />
+                            </th>
 
-                        <th pSortableColumn="lineManager" style="width: 15%">
-                            Line Manager
-                            <img
-                                [src]="
-                                    sortField === 'lineManager' &&
-                                    sortOrder === 1
-                                        ? 'assets/images/Up arrow.png'
-                                        : sortField === 'lineManager' &&
-                                          sortOrder === -1
-                                        ? 'assets/images/Icon ionic-md-arrow-dropup.png'
-                                        : 'assets/images/Sort.png'
-                                "
-                                alt="Sort Icon"
-                                class="sort-icon"
-                            />
-                        </th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-product>
-                    <tr>
-                        <td>{{ product.code }}</td>
-                        <td>{{ product.imported }}</td>
-                        <td>{{ product.activated }}</td>
-                        <td>{{ product.costCenter }}</td>
-                        <td>{{ product.lineManager }}</td>
-                    </tr>
-                </ng-template>
-            </p-table>
-        </div>
-        
-         <!-- data for mobile view -->
-        <div class="data-wrapper" *ngFor="let product of products">
-            <div class="data-container card">
-                <div class="qr-holder"><img src="assets/images/Qr_code.png" alt="" /></div>
-                <div class="data-holder">
-                    <div class="data-row">{{ product.code }}</div>
-                    <div class="data-row">{{ product.costCenter }}</div>
-                    <div class="data-row">
-                        <div class="data-col"><img src="assets/images/import.png" alt="import">{{ product.imported }}</div>
-                        <div class="data-col"><img src="assets/images/activated.png" alt="activated">{{ product.activated }}</div>      
+                            <th pSortableColumn="cost-center">
+                                Cost Center
+                                <img
+                                    [src]="
+                                        sortField === 'cost-center' &&
+                                        sortOrder === 1
+                                            ? 'assets/images/Up arrow.png'
+                                            : sortField === 'cost-center' &&
+                                              sortOrder === -1
+                                            ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                            : 'assets/images/Sort.png'
+                                    "
+                                    alt="Sort Icon"
+                                    class="sort-icon"
+                                />
+                            </th>
+
+                            <th pSortableColumn="lineManager">
+                                Line Manager
+                                <img
+                                    [src]="
+                                        sortField === 'lineManager' &&
+                                        sortOrder === 1
+                                            ? 'assets/images/Up arrow.png'
+                                            : sortField === 'lineManager' &&
+                                              sortOrder === -1
+                                            ? 'assets/images/Icon ionic-md-arrow-dropup.png'
+                                            : 'assets/images/Sort.png'
+                                    "
+                                    alt="Sort Icon"
+                                    class="sort-icon"
+                                />
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-voucherHistory>
+                        <tr>
+                            <td>{{ voucherHistory.ean_code }}</td>
+                            <td>{{ voucherHistory.import_date | date: 'dd/MM/yyyy' }}</td>
+                            <td>{{ voucherHistory.activate_date | date: 'dd/MM/yyyy' }}</td>
+                            <td>{{ voucherHistory.cost_center }}</td>
+                            <td>{{ voucherHistory.line_manager }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+            <!-- data for small screen -->
+            <div class="sm:col-12 mobile-only">
+                <section class="data-wrapper" *ngFor="let voucher of voucherHistory">
+                    <div class="data-container card">
+                        <div class="qr-holder">
+                            <img src="assets/images/Qr_code.png" alt="" />
+                        </div>
+                        <div class="data-holder">
+                            <div class="data-row">
+                                <div
+                                    class="data-col"
+                                    style="
+                                        font-family: 'NestleTextTF-Bold';
+                                        font-weight: bold;
+                                    "
+                                >
+                                    {{ voucher.line_manager }}
+                                </div>
+                                <div class="data-col flex justify-right">
+                                    <span
+                                        [ngClass]="
+                                            voucher.status == 'Available'
+                                                ? 'available'
+                                                : 'assigned'
+                                        "
+                                        class="status-data"
+                                        >{{ voucher.status }}</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="data-row">{{ voucher.ean_code }}</div>
+                            <div class="data-row">{{ voucher.cost_center }}</div>
+                            <div class="data-row">
+                                <div class="data-col">
+                                    <img
+                                        src="assets/images/import.png"
+                                        alt="import"
+                                    />{{ voucher.import_date | date: 'dd/MM/yyyy' }}
+                                </div>
+                                <div class="data-col">
+                                    <img
+                                        src="assets/images/activated.png"
+                                        alt="activated"
+                                    />{{ voucher.activate_date | date: 'dd/MM/yyyy' }}
+                                </div>
+                            </div>
+                            <div class="data-row blue">{{ voucher.url }}</div>
+                        </div>
                     </div>
-                    <div class="data-row">
-                        <div class="data-col"><img src="assets/images/lineManager.png" alt="import">{{ product.lineManager }}</div>
-                    </div>
-                </div>                
+                </section>
             </div>
         </div>
-    </section>
+    </div>
 </div>

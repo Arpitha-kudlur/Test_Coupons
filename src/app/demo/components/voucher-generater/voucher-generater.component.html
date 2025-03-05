@@ -7,7 +7,7 @@
             <div class="success-img">
                 <img src="assets\images\success.svg" />
             </div>
-            <div class="title">
+            <div class="title cursor-wait">
                 <h3>
                     Voucher Generated
                     <br> Successfully
@@ -20,27 +20,27 @@
                     <img src="assets\images\share-icon.svg" alt="share"/>
                 </div>
                 <div class="user">
-                    <div class="username">Alexander</div>
-                    <p class="user-mail">alexander.richi&#64;nestle.com</p>
+                    <div class="username">{{voucher.user_name}}</div>
+                    <p class="user-mail">{{voucher.email_id}}</p>
                 </div>
                 <h2>50 CHF</h2>
                 <div class="date-place-wrapper">
                     <div class="place">
-                        <span>Nestle Shop</span>
+                        <span class="text-base">{{voucher.cost_center}}</span>
                     </div>
                     <div class="date">
-                        <span>12/02/2024</span>
+                        <span class="text-base">{{ voucher.activate_date | date: 'dd/MM/yyyy'}}</span>
                     </div>
                 </div>
             </div>
             <div class="content-2">
-                <div class="qr-code">
+                <div class="qr-code flex flex-column align-items-center " >
                     <img src="assets/images/Qr_code.png" alt="qr-code"/>
-                    
+                    <span>{{voucher.ean_code}}</span>
                 </div>
                 <div class="trans-link-container">
                     <p class="trans-link">
-                        <span>https://www.tec-nestle-voucher.shop.itnestle-voucher.shop.it</span>
+                        <span>{{voucher.url}}</span>
                     </p>
                     <div class="copy-container">
                         <div class="copy-img"><img src="assets\images\copy.svg" alt="copy"></div>

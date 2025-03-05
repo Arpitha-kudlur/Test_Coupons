@@ -10,6 +10,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
 import { RouterLink, RouterModule } from '@angular/router';
+import { ToastModule } from 'primeng/toast';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { RouterLink, RouterModule } from '@angular/router';
         PanelMenuModule,
         ButtonModule,
         RouterLink, RouterModule,
-        DashboardsRoutingModule
+        DashboardsRoutingModule,
+        ToastModule
 
     ],
     declarations: [DashboardComponent]

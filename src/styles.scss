@@ -22,6 +22,7 @@ $gutter: 1rem; //for primeflex grid system
 :root {
     // colors
     --primary-color: #0065a1;
+    --primary-color-dark:#004065;
     --primary-white: #ffffff;
     --primary-black: #000000;
     --primary-light-black: #0a0a0a;
@@ -83,6 +84,7 @@ span,
 li {
     font-family: "NestleTextTF-Book";
 }
+// customised blue button
 .primary-btn {
     background-color: var(--primary-color);
     width: 100%;
@@ -91,10 +93,26 @@ li {
     border-radius: 6px;
     color: var(--primary-white);
     font-family: "NestleTextTF-Bold";
-    // font-weight: bold !important;
     font-size: var(--font-normal);
     cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease,
+        transform 0.2s ease;
 }
+.primary-btn:hover,
+.primary-btn:focus {
+    background-color: var(--primary-color-dark);
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Active */
+.primary-btn:active {
+    background-color: var(--primary-color-darker);
+    transform: scale(0.98);
+    border-color: var(--primary-color-dark);
+}
+
 .p-button-text {
     font-family: "NestleTextTF-Book" !important;
 }
@@ -129,11 +147,12 @@ p-table tr {
 
 .p-datatable .p-datatable-thead > tr > th {
     font-family: "NestleTextTF-Bold";
-    font-size: 16px;
+    font-size: 14px;
     padding: 14px 18px;
     text-align: left;
     background-color: var(--table-header-bg);
     color: var(--primary-black);
+    width: 200px;
 }
 .p-datatable .p-datatable-thead > tr > th:hover {
     background-color: var(--table-header-bg);
@@ -189,32 +208,96 @@ p-table tr {
     }
 }
 
-.custom-switch {
-    background-color: #0065a1;
-    border-color: #0065a1;
-    transition: background-color 0.3s ease, border-color 0.3s ease;
-  }
-
-  .custom-switch::before {
-  content: "";
-//   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 18px;
-  height: 18px;
-  background-color: #0065a1; /* Default blue for the button */
-  border-radius: 50%; /* Circular button */
-  transition: transform 0.3s ease, background-color 0.3s ease;
+.selectors {
+    border: 1px solid var(--primary-border);
+    // width: 150px;
+    border-radius: 3px;
+    padding: 4px;
+    font-size: var(--font-normal);
+    cursor: pointer;
+    color: var(--primary-black);
+    option {
+        font-size: var(--font-normal);
+    }
+}
+.desktop-only {
+    display: block;
+}
+.mobile-only {
+    display: none;
+}
+.status-data {
+    padding: 4px 10px;
+    border-radius: 14px;
+    font-size: var(--font-normal);
+}
+.available {
+    background-color: #eff5ee;
+    color: var(--primary-green);
+}
+.assigned {
+    background-color: #fcebf0;
+    color: var(--primary-pink);
 }
 
-  /* Color when checked */
-  .custom-switch:checked {
-    background-color: green;
-    border-color: green;
-  }
-  
-  /* Remove focus border and box shadow */
-  .custom-switch:focus {
-    outline: none;
-    box-shadow: none;
+@media only screen and (max-width: 500px) {
+    #dashboard_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .desktop-only {
+        display: none;
+    }
+    .mobile-only {
+        display: block;
+        justify-content: center;
+        .data-wrapper {
+            display: block;
+            margin-top: 14px;
+            .data-container {
+                border: none;
+                margin-bottom: 10px;
+                display: flex;
+                flex-direction: row;
+                gap: 14px;
+                align-items: center;
+                padding: 10px 20px;
+                .qr-holder {
+                    width: 25%;
+                    img {
+                        width: 70px;
+                    }
+                }
+                .data-holder {
+                    width: 75%;
+                    .data-row {
+                        width: 100%;
+                        display: flex;
+                        margin-bottom: 10px;
+                        font-size: 13px;
+                        .data-col {
+                            width: 50%;
+                            display: flex;
+                            align-items: center;
+                            gap: 4px;
+                            margin-bottom: 2px;
+                            img {
+                                width: 14px;
+                                height: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.truncate {
+    margin-top: 100px;
+    white-space: nowrap;     /* Prevents text from wrapping */
+    overflow: hidden;        /* Hides overflowing text */
+    text-overflow: ellipsis; /* Adds "..." at the end */
+    width: 200px;            /* Adjust width as needed */
   }
